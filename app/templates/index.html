@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Flask Scrapy Template{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>API Manual</h1>
+</div>
+<div class="page-body">
+    <ul>
+        <li>
+            <h4>Flask Scrapy Template Test API Example</h4>
+            <p>Action: /api/v1.0/test_flask_scrapy</p>
+            <p>Option Field: get_latest</p>
+            <p>Description: this api will search trigger spider test_spider working as an example.</p>
+            <p>e.g. http://localhost:5002/api/v1.0/test_flask_scrapy?key=some_search_key&get_latest=True</p>
+        </li>
+        <li>
+            <h4>Admin actions</h4>
+            <p>Action: /api/v1.0/admin/</p>
+            <p>Option Action: <b>check</b> - Check the spider status </p>
+            <p>Option Action: <b>turn_on</b> - Turn on spiders </p>
+            <p>Option Action: <b>turn_off</b> - Turn off spiders </p>
+            <p>Option Field: spider </p>
+            <p>e.g. https://vehiclescrapy.cartell.ie/api/v1.0/admin/check</p>
+            <p>e.g. https://vehiclescrapy.cartell.ie/api/v1.0/admin/turn_on?spider=test_spider</p>
+            <p>e.g. https://vehiclescrapy.cartell.ie/api/v1.0/admin/turn_off?spider=test_spider</p>
+        </li>
+    </ul>
+</div>
+{% endblock %}

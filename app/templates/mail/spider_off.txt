@@ -1,0 +1,15 @@
+Hi,
+
+System has turn off spider {{ spider }}. If you need to turn on it please go to:
+
+{{ url_for('api.spider_admin', action='turn_on', spider=spider, _external=True) }}
+
+To check the site available, please go to :
+{{ site_url }}
+
+
+Sincerely,
+
+The Vehicle Scrapy Service
+
+Note: replies to this email address are not monitored.
