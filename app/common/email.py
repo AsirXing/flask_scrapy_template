@@ -26,6 +26,6 @@ class Email():
             # thr = Thread(target=Email.send_async_email, args=[app, msg])
             # thr.start()
             # return thr
-        except Exception, e:
+        except Exception as e:
             logging.error('Sending email failed.')
             logging.error(e)

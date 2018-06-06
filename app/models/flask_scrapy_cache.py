@@ -23,7 +23,7 @@ class FlaskScrapyCache(db.Model):
             raise ValidationError('Missing key or spider name')
         try:
             return FlaskScrapyCache.query.filter_by(key=key, spider_name=spider_name).first()
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
@@ -41,5 +41,5 @@ class FlaskScrapyCache(db.Model):
                 cache = FlaskScrapyCache(key=key, spider_name=spider_name, xml=xml)
                 db.session.add(cache)
             return cache
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)

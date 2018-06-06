@@ -21,7 +21,7 @@ class SpiderConfigure(db.Model):
     def get(spider_name):
         try:
             return SpiderConfigure.query.filter_by(spider_name=spider_name).first()
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
@@ -32,7 +32,7 @@ class SpiderConfigure(db.Model):
                 new_configure = SpiderConfigure(spider_name=name)
                 db.session.add(new_configure)
                 db.session.commit()
-        except Exception, e:
+        except Exception as e:
             db.session.rollback()
             raise DBError(e)
         finally:
@@ -51,7 +51,7 @@ class SpiderConfigure(db.Model):
                 return True
             else:
                 return False
-        except Exception, e:
+        except Exception as e:
             db.session.rollback()
             raise DBError(e)
         finally:
@@ -65,7 +65,7 @@ class SpiderConfigure(db.Model):
             if not spider_configure.email_alert:
                 spider_configure.email_alert = True
                 db.session.commit()
-        except Exception, e:
+        except Exception as e:
             db.session.rollback()
             raise DBError(e)
         finally:
@@ -76,14 +76,14 @@ class SpiderConfigure(db.Model):
     def get_all_spiders():
         try:
             return SpiderConfigure.query.all()
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
     def get_all_live_spiders():
         try:
             return SpiderConfigure.query.filter_by(state=Constants.VALUE_STATE_ON).all()
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
@@ -91,7 +91,7 @@ class SpiderConfigure(db.Model):
         try:
             return [r.spider_name for r in SpiderConfigure.query.with_entities(SpiderConfigure.spider_name
                                                             ).filter_by(state=Constants.VALUE_STATE_ON).all()]
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
@@ -103,7 +103,7 @@ class SpiderConfigure(db.Model):
                 spider_configure = SpiderConfigure.query.filter_by(spider_name=spider_name).first()
                 if spider_configure and spider_configure.state == Constants.VALUE_STATE_OFF:
                     spider_configure.state = Constants.VALUE_STATE_ON
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
@@ -115,5 +115,5 @@ class SpiderConfigure(db.Model):
                 spider_configure = SpiderConfigure.query.filter_by(spider_name=spider_name).first()
                 if spider_configure and spider_configure.state == Constants.VALUE_STATE_ON:
                     spider_configure.state = Constants.VALUE_STATE_OFF
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)

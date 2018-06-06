@@ -8,7 +8,8 @@ from ..common.constants import Constants
 from ..common.utils import Utils
 from ..common.exceptions import RequestTimeoutError, NotFoundError, ValidationError
 from multiprocessing import Process
-from scrapy.xlib.pydispatch import dispatcher
+# from scrapy.xlib.pydispatch import dispatcher
+from pydispatch import dispatcher
 from scrapy import signals
 from scrapy.utils.project import get_project_settings
 from scrapy.settings import Settings
@@ -66,7 +67,7 @@ class SpiderManager(Process):
             d.addBoth(lambda _: reactor.stop())
             reactor.run() # The script will block here until all crawlers are finished
         else:
-            logging.warn('No live spider found')
+            logging.warning('No live spider found')
 
         self.result_queue.put(self.items)
 

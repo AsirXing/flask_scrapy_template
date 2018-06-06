@@ -3,7 +3,7 @@ import logging
 from .. import db
 from sqlalchemy import UniqueConstraint
 from datetime import datetime
-from spider_configure import SpiderConfigure
+from .spider_configure import SpiderConfigure
 from ..common.exceptions import ValidationError, DBError
 
 
@@ -25,7 +25,7 @@ class FlaskScrapyStatus(db.Model):
             raise ValidationError('Missing key or spider name')
         try:
             return FlaskScrapyStatus.query.filter_by(key=key, spider_name=spider_name).first()
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)
 
     @staticmethod
@@ -50,5 +50,5 @@ class FlaskScrapyStatus(db.Model):
                     status.failed_times = 1
                 db.session.add(status)
             return status
-        except Exception, e:
+        except Exception as e:
             raise DBError(e)

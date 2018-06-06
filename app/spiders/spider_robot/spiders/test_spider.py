@@ -39,7 +39,7 @@ class TestSpider(CommonSpider):
             # scrape data here
             logging.info("Start scraping %s" % response.url)
 
-        except Exception, e:
+        except Exception as e:
             logging.exception(e)
             self.send_no_response_email()
             error = self.get_error_item(

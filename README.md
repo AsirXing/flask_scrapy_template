@@ -10,7 +10,14 @@ INSERT IGNORE INTO `spider_configure` (`spider_name`) VALUES ('test_spider');
 ```
 
 # Deploy this python project
-Current version is based on Python 2.7. I will upgrade to 3.* when I have time
+
+Latest update: upgrade project to Python 3.6 and Scrapy 1.5.0
+
+v2.0: Python 3.6 and Scrapy 1.5.0
+
+v1.0: Python 2.7 and Scrapy 1.0.3
+
+The following steps are all based on v1.0:
 
 1. Install sqlite
 ```
@@ -64,6 +71,8 @@ pip2.7 install -r requirements.txt
 only first time deploy need to deploy migrate database
 
 ```
+export DEV_DATABASE_URL='mysql+pymysql://username:password@localhost/flask_scrapy_template'
+
 python2.7 flask_scrapy_manage.py db init
 python2.7 flask_scrapy_manage.py db migrate
 python2.7 flask_scrapy_manage.py db upgrade

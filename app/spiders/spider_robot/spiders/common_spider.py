@@ -31,7 +31,7 @@ class CommonSpider(scrapy.Spider):
                                      'mail/spider_off',
                                      spider=self.name,
                                      site_url=self.url)
-        except Exception, e:
+        except Exception as e:
             logging.exception(e)
             raise ProcessingError('Sending alert email failed')
 
@@ -45,7 +45,7 @@ class CommonSpider(scrapy.Spider):
                              'mail/spider_no_response',
                              spider=self.name,
                              site_url=self.url)
-        except Exception, e:
+        except Exception as e:
             logging.exception(e)
             raise ProcessingError('Sending alert email failed')
 

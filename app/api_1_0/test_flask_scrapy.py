@@ -6,7 +6,7 @@ from ..common.constants import Constants
 from ..models.flask_scrapy_cache import FlaskScrapyCache
 from ..models.flask_scrapy_status import FlaskScrapyStatus
 from ..spiders.spider_manager import SpiderManager
-from multiprocessing.queues import Queue
+from multiprocessing import Queue
 from ..common.exceptions import HttpError, NotFoundError
 
 

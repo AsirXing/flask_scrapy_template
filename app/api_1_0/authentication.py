@@ -2,7 +2,7 @@ __author__ = 'chenfeiyu'
 from flask import g, jsonify
 from flask_httpauth import HTTPBasicAuth
 from . import api
-from errors import unauthorized, forbidden
+from .errors import unauthorized, forbidden
 from ..common.utils import Utils
 from ..common.constants import Constants
 from config import Config
