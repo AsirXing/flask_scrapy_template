@@ -42,7 +42,7 @@ class RandomUserAgent(object):
 
     def process_request(self, request, spider):
         # 30% useragent change
-        if random.choice(xrange(1, 100)) <= 30:
+        if random.choice(range(1, 100)) <= 30:
             user_agent = random.choice(self.agents)
             logging.info("changing random user agent: " + user_agent)
             request.headers.setdefault('User-Agent', user_agent)
